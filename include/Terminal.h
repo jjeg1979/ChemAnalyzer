@@ -5,7 +5,7 @@
  *  Both belong to the implementation of a Chemical Reaction Analyzer Project based on the
  *  grammar:
  *  
- *
+ * ;Reaction
  *
  *
  *
