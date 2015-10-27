@@ -35,8 +35,15 @@ namespace Terminales {
 	// Auxiliary operations
 	bool is_char( char );		// true for alphabetic chars
 	
-	bool operator==( const char&, const char& );
-	bool operator!=( const char&, const char& );
+	// Operators for comparing objects of Teminal types
+	bool operator==( const Lower_case&, const Lower_case& );
+	bool operator!=( const Lower_case&, const Lower_case& );
 	
+	// Operators for reading in/printing out terminal types
+	istream& operator>>( istream&, Lower_case& );
+	ostream& operator<<( ostream&, const Lower_case& );
+	
+	 // class to be thrown as exception for terminals
+	class InvalidTerminal{};	 
 	
 }
