@@ -5,11 +5,29 @@
  *  Both belong to the implementation of a Chemical Reaction Analyzer Project based on the
  *  grammar:
  *  
- * ;Reaction
+ * ;Reacción:
+ *    	Reactivo
+ *   	Reacción "-" Reactivo
+ *   	Reacción "=" Reactivo
+ *   
+ *	;Reactivo:
+ *   	Molécula
+ *   	Reactivo "+" Molécula
+ *   
+ *	;Molécula:
+ *   	Átomo
+ *   	ÁtomoMolecula
+ *    
+ * ;Átomo:
+ *  	Mayúscula
+ *  	MayúsculaMinúscula
+ * 		MayúsculaMinúsculaMinúscula
  *
+ * ;Mayúscula:
+ *  	"A"-"Z"
  *
- *
- *
+ * ;Minúscula:
+ * 		"a"-"z"
  *
  */
  
