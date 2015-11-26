@@ -5,14 +5,15 @@
  */
  
  #include <iostream>
- #include "Terminal.h"
+ #include "../include/Terminal.h"
  
  using namespace std;
  using namespace Terminales;
  
- int main(
+ int main()
+ {
 	 Lower_case Reactivo;
 	 
 	 std::cout << "Reactivo por defecto: " << Reactivo << '\n';
 	 return 0;
- )
+ }

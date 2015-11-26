@@ -32,10 +32,15 @@
  */
  
 #include <iostream>
+using namespace std;
 
 namespace Terminales {
 	class Lower_case {
 		public:
+			// class to be thrown as exception for terminals
+			class InvalidTerminal{};
+			
+			// Constructors	 
 			Lower_case( char );		// check for valid Lower_case and initialite
 			Lower_case();
 			// the default copy operations are fine
@@ -48,7 +53,7 @@ namespace Terminales {
 			
 		private:
 			char lc;
-	};
+	}; // end of class definition Lower_case
 	
 	// Auxiliary operations
 	bool is_char( char );		// true for alphabetic chars
@@ -59,9 +64,7 @@ namespace Terminales {
 	
 	// Operators for reading in/printing out terminal types
 	istream& operator>>( istream&, Lower_case& );
-	ostream& operator<<( ostream&, const Lower_case& );
+	ostream& operator<<( ostream& , const Lower_case& );
+	 
 	
-	 // class to be thrown as exception for terminals
-	class InvalidTerminal{};	 
-	
-}
+} // end of namespace Terminales

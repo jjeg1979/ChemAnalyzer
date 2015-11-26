@@ -4,13 +4,13 @@
  *  Detailed description starts here.
  */
  
-#include "Terminal.h"
+#include "../include/Terminal.h"
 
 namespace Terminales {
 	Lower_case::Lower_case( char c )
 	: lc{ c }
 	{
-		if !is_char( c ) throw InvalidTerminal{};
+		if (!is_char( c )) throw InvalidTerminal{};
 	}
 	
 	const Lower_case& default_lower_case( )
@@ -26,7 +26,7 @@ namespace Terminales {
 	
 	void Lower_case::add_lc( char c )
 	{
-		if is_char( c )
+		if ( is_char( c ) )
 			lc = c;
 		else
 			throw InvalidTerminal{};
@@ -34,7 +34,7 @@ namespace Terminales {
 	
 	bool is_char( char c )
 	{
-		if !isalpha( c ) return false;
+		if (!isalpha( c )) return false;
 		return true;
 	}
 	
@@ -55,13 +55,13 @@ namespace Terminales {
 		
 		if( !is ) return is;
 		
-		if !( isalpha( c ) )	// Oops: not a valid char
+		if ( !isalpha( ch ) )	// Oops: not a valid char
 		{
 			is.clear( ios_base::failbit );	// set the failbit
 			return is;
 		}
 		
-		lc = Lower_case( c );			// Update lc;
+		lc = Lower_case( ch );			// Update lc;
 		return is;
 	}
 	
