@@ -3,17 +3,18 @@
 CC=g++
 # Hey!, I am comment number 2. I want to say that CFLAGS will be the
 # options I'll pass to the compiler.
-CFLAGS= -std=c++0x -c -Wall -lwinmm 
-all: ChemAnalyzer
+CFLAGS= -std=c++11 -pedantic -O2 -Wall -lwinmm -static-libgcc
+OBJECTS = main.o Terminal.o
+TARGET = ChemAnalyzer.exe
 
-./src/Terminal.o: ./src/Terminal.cpp
-	$(CC) $(CFLAGS) ./src/Terminal.cpp ./include/Terminal.h -c -o ./src/Terminal.o
+ChemAnalyzer.exe: $(OBJECTS) 
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-./src/main.o: ./src/main.cpp
-	$(CC) $(CFLAGS) ./src/main.cpp -c -o ./src/main.o
+Terminal.o: ./src/Terminal.cpp ./include/Terminal.h 
+	$(CC) $(CFLAGS) -c ./src/Terminal.cpp 
 
-ChemAnalyzer.exe: ./src/main.o ./src/Terminal.o
-	$(CC) $(CFLAGS) -o ./src/main.o ./src/Terminal.o 
-	
+main.o: ./src/main.cpp ./include/Terminal.h
+	$(CC) $(CFLAGS) -c ./src/main.cpp 
+
 clean:
-	del .\src\*.o .\ChemAnalyzer.exe
+	del $(OBJECTS) $(TARGET)
