@@ -10,11 +10,11 @@
  *   	Reacción "-" Reactivo
  *   	Reacción "=" Reactivo
  *   
- *	;Reactivo:
+ * ;Reactivo:
  *   	Molécula
  *   	Reactivo "+" Molécula
  *   
- *	;Molécula:
+ * ;Molécula:
  *   	Átomo
  *   	ÁtomoMolecula
  *    
@@ -32,31 +32,38 @@
  */
  
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 namespace Terminales {
+		
 	class Lower_case {
 		public:
 			// class to be thrown as exception for terminals
 			class InvalidTerminal{};
 			
 			// Constructors	 
-			Lower_case( char );		// check for valid Lower_case and initialite
+			Lower_case( string );		// check for valid Lower_case and initialite
 			Lower_case();
 			// the default copy operations are fine
 			
 			// non-modifying operations
-			char lower_case() const { return lc; }
+			string lower_case() const { return lc; }
+			static const int max_char() const { return num_char; }
 			
 			// modifying operations:
-			void add_lc( char );
+			void add_lc( string );
 			
 		private:
-			char lc;
+			string lc;					// Variable to store terminal
+			// Constants
+			static const int num_char { 2 };	// maximum number of lower case characters in an atom
+				
 	}; // end of class definition Lower_case
 	
 	// Auxiliary operations
-	bool is_char( char );		// true for alphabetic chars
+	bool is_valid( string );		// true for alphabetic chars
 	
 	// Operators for comparing objects of Teminal types
 	bool operator==( const Lower_case&, const Lower_case& );

@@ -7,34 +7,43 @@
 #include "../include/Terminal.h"
 
 namespace Terminales {
-	Lower_case::Lower_case( char c )
-	: lc{ c }
+	Lower_case::Lower_case( string s )
+	: lc{ s }
 	{
-		if (!is_char( c )) throw InvalidTerminal{};
+		if ( !is_valid( s ) ) throw InvalidTerminal{};
 	}
 	
 	const Lower_case& default_lower_case( )
 	{
-		static Lower_case Carbon{ 'C' };
-		return Carbon;
+		static Lower_case Element{ "is" };
+		return Element;
 	}
+	
 	Lower_case::Lower_case()
-	:lc{ default_lower_case().lc }
+	: lc{ default_lower_case().lc }
 	{
 		
 	}
 	
-	void Lower_case::add_lc( char c )
+	void Lower_case::add_lc( string s )
 	{
-		if ( is_char( c ) )
-			lc = c;
+		if ( is_valid( s ) )
+			lc = s;
 		else
 			throw InvalidTerminal{};
 	}
 	
-	bool is_char( char c )
+	bool is_valid( string s )
 	{
-		if (!isalpha( c )) return false;
+		// Elements have num_char characters at maximum
+		if ( s.size()  > Lower_case.max_char() ) return false;
+		
+		// See if all elements are alphabetic characters
+		for ( char c : s )
+		{
+			if ( !isalpha( c ) ) return false;			
+		}
+		// If all checks are ok must be valid
 		return true;
 	}
 	
@@ -50,18 +59,18 @@ namespace Terminales {
 	
 	istream& operator>>( istream& is, Lower_case& lc )
 	{
-		char ch;
-		is >> ch;
+		string s;
+		is >> s;
 		
 		if( !is ) return is;
 		
-		if ( !isalpha( ch ) )	// Oops: not a valid char
+		if ( !is_valid( s ) )	// Oops: not a valid char
 		{
 			is.clear( ios_base::failbit );	// set the failbit
 			return is;
 		}
 		
-		lc = Lower_case( ch );			// Update lc;
+		lc.add_lc( s );			// Update lc;
 		return is;
 	}
 	
