@@ -20,7 +20,7 @@ namespace Terminales {
 	}
 	
 	Lower_case::Lower_case()
-	: lc{ default_lower_case().lc }
+	: lc{ default_lower_case().lower_case() }
 	{
 		
 	}
@@ -32,11 +32,12 @@ namespace Terminales {
 		else
 			throw InvalidTerminal{};
 	}
-	
+    
 	bool is_valid( string s )
 	{
-		// Elements have num_char characters at maximum
-		if ( s.size()  > Lower_case.max_char() ) return false;
+        Lower_case *l;
+       	// Elements have num_char characters at maximum
+		if ( s.size() > l->max_char() ) return false;
 		
 		// See if all elements are alphabetic characters
 		for ( char c : s )

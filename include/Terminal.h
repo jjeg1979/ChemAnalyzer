@@ -50,15 +50,15 @@ namespace Terminales {
 			
 			// non-modifying operations
 			string lower_case() const { return lc; }
-			static const int max_char() const { return num_char; }
+			int max_char() { return num_char; }
 			
 			// modifying operations:
-			void add_lc( string );
+			void add_lc( string );       // assignment to lc 
 			
 		private:
 			string lc;					// Variable to store terminal
-			// Constants
-			static const int num_char { 2 };	// maximum number of lower case characters in an atom
+			// Maximum number of lower case characters in an atom
+			static const int num_char{ 2 };	
 				
 	}; // end of class definition Lower_case
 	
